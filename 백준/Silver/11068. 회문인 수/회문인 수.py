@@ -1,23 +1,26 @@
-def is_palindrome(s):
-    return s == s[::-1]
+import sys
 
-def to_base(n, base):
-    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/"
-    result = ""
-    while n > 0:
-        n, remainder = divmod(n, base)
-        result = chars[remainder] + result
-    return result
+T = int(sys.stdin.readline())
+arr = [int(sys.stdin.readline()) for _ in range(T)]
 
-def check_palindrome_in_bases(n):
-    for base in range(2, 65):
-        converted = to_base(n, base)
-        if is_palindrome(converted):
-            return 1
-    return 0
+char = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/"
 
-T = int(input())
-numbers = [int(input()) for _ in range(T)]
+for i in arr:
+    flag = False
 
-for num in numbers:
-    print(check_palindrome_in_bases(num))
+    for j in range(2, 65):
+        n = i
+        re_arr = ""
+
+        while n > 0:
+            n, k = divmod(n, j)
+            re_arr = char[k] + re_arr
+
+        if re_arr == re_arr[::-1]:
+            flag = True
+            break
+
+    if flag:
+        print(1)
+    else:
+        print(0)
