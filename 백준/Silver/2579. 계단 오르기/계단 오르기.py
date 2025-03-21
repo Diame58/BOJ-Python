@@ -2,10 +2,9 @@ T=int(input())
 stair=[int(input()) for i in range(T)]
 dp=[0]*T
 
-if T==1:
-    print(stair[0])
-elif T==2:
-    print(stair[0]+stair[1])
+
+if len(stair)<=2:
+    print(sum(stair))    
 else:
     dp[0]=stair[0]
     dp[1]=stair[0]+stair[1]
