@@ -2,22 +2,22 @@ import sys
 
 input=sys.stdin.readline
 
-l = int(input())
-a = int(input())
-b = int(input())
-c = int(input())
-d = int(input())
+L= int(input())
+A= int(input())
+B= int(input())
+C= int(input())
+D= int(input())
 
-e = a // c
-f = b // d
+korean=A//C
+math=B//D
 
-if e > f:
-    if a % c == 0:
-        print(l - e)
+if korean>math:
+    if A%C==0:
+        print(L-korean)
     else:
-        print(l - 1 - e)
+        print(L-1-korean)
 else:
-    if b % d == 0:
-        print(l - f)
+    if B%D==0:
+        print(L-math)
     else:
-        print(l - 1 - f)
+        print(L-1-math)
