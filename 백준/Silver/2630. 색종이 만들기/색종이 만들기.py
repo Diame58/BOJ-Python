@@ -1,29 +1,31 @@
 import sys
 
-N=int(sys.stdin.readline())
+n=int(input())
 
-colorpaper=[list(map(int,sys.stdin.readline().split())) for i in range(N)]
+colorpaper=[list(map(int, sys.stdin.readline().split())) for i in range(n)]
 
 white=0
 blue=0
 
-def divideandconquer(x,y,N):
-    global white,blue
-    samecolor=colorpaper[x][y]
-    for i in range(x,x+N):
-        for j in range(y,y+N):
-            if samecolor!=colorpaper[i][j]:
-                divideandconquer(x,y,N//2)
-                divideandconquer(x,y+N//2,N//2)
-                divideandconquer(x+N//2,y,N//2)
-                divideandconquer(x+N//2,y+N//2,N//2)
+def divideAndConquer(x, y, n):
+    global blue, white
+    sameColor=colorpaper[x][y]
+    for i in range(x, x+n):
+        for j in range(y, y+n):
+            if sameColor!= colorpaper[i][j]:
+                divideAndConquer(x, y, n//2)
+                divideAndConquer(x,y+n//2, n//2)
+                divideAndConquer(x+n//2, y, n//2)
+                divideAndConquer(x+n//2, y+n//2, n//2)
                 return
-    if samecolor==0:
+    
+    if sameColor==0:
         white+=1
         return
     else:
         blue+=1
         return
-divideandconquer(0,0,N)
+
+divideAndConquer(0, 0, n)
 print(white)
 print(blue)
